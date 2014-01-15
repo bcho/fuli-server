@@ -1,0 +1,3 @@
+# Server Side Configurations
+
+- nginx.conf: we use [nginx](http://nginx.org) to host our php app.

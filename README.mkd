@@ -1,0 +1,21 @@
+# fuli Server APP
+
+[WIP]
+
+福利 fúlì
+
+生活上的利益,特指照顾职工生活利益。
+
+来源：[汉典](http://www.zdic.net/c/f/144/315813.htm)
+
+
+Server side source code.
+
+
+## Dependencies
+
+- PHP5 (>= 5.3.0)
+- MySQL
+- Nginx
+- Composer
+- Slim

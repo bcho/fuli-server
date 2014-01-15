@@ -1,0 +1,15 @@
+# Server APP Configurations
+
+The basic configuration is `app.php`, in order to provide a flexible
+configuration base on your environment, you may want to use a soft linked file
+instead.
+
+## Secure Notes
+
+Everythings related to your hosting environment, such as database password,
+encrypt salt should **not** be added into version control.
+
+
+## TODO
+
+- [?] `application mode` base configuration loading (i.e., envvar inject)
