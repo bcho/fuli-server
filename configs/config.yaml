@@ -1,0 +1,7 @@
+---
+name: vtmfuli
+version: 1
+...
+handle:
+    - rewrite: if (path ~ "/$") goto "/public_html/index.php?%{QUERY_STRING}"
+    - rewrite: if (!is_dir() && !is_file()) goto "/public_html/index.php?%{QUERY_STRING}"
