@@ -1,4 +1,4 @@
 .PHONY: tests
 
 tests:
-	./vendor/bin/phpunit UnitTest app/tests/*
+	./vendor/bin/phpunit app/tests/*
