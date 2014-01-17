@@ -4,15 +4,21 @@ require_once 'bootstrap.php';
 
 class RoutesTest extends Slim_Framework_TestCase
 {
-    public function testRoutesIdCondition()
+    /**
+     * @dataProvider routeProvider
+     */
+    public function testRoutesIdCondition($route, $response)
     {
-        $this->get('/user/1');
-        $this->assertEquals(200, $this->response->status());
+        $this->get($route);
+        $this->assertEquals($response, $this->response->status());
+    }
 
-        $this->get('/user/1a');
-        $this->assertEquals(404, $this->response->status());
-        
-        $this->get('/category/1a');
-        $this->assertEquals(404, $this->response->status());
+    public function routeProvider()
+    {
+        return array(
+            array('/user/1', 200),
+            array('/user/1a', 404),
+            array('/category/1a', 404)
+        );
     }
 }

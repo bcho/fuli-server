@@ -19,7 +19,7 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
 {
 
     // Initialize our own copy of the slim application
-    public function _request_setup()
+    public function setup()
     {
         $app = new \Slim\Slim(array(
             'version' => '0.0.0',
@@ -37,8 +37,6 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
     // slim environment
     public function request($method, $path, $options = array())
     {
-        $this->_request_setup();
-
         // Capture STDOUT
         ob_start();
 
