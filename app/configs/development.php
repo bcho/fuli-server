@@ -28,3 +28,13 @@ $view->parseOptions = array(
     'debug' => true,
     'cache' =>  ROOT_PATH . '/cache'
 );
+
+// prepare database connection
+CRUD\CRUD::configure(array(
+    'dsn' => 'mysql:host=localhost;dbname=fuli',
+    'username' => 'fuli',
+    'password' => 'fuli',
+    'driver_options' => array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+    )
+));
