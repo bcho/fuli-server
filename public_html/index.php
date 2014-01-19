@@ -6,7 +6,7 @@ define('APP_PATH', realpath(ROOT_PATH . '/app'));
 
 require_once VENDOR_PATH . '/autoload.php';
 
-$app = new \Slim\Slim();
+$app = new Slim();
 
 // setup configurations
 require_once APP_PATH . '/configs/app.php';

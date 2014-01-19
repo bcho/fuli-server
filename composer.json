@@ -8,5 +8,10 @@
 
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
+    },
+
+    "autoload": {
+        "files": ["app/libs/CRUD.php", "app/libs/Slim.php"],
+        "classmap": ["app/models/"]
     }
 }

@@ -1,65 +1,37 @@
 <?php
 
-$app->group('', function () use ($app) {
-    // TODO resource helper
-    // TODO route naming convention
-    
-    $app->group('/link', function () use ($app) {
-        // get a link
-        $app->get('/:id', function ($id) use ($app) {
-            echo $id;
-        })->conditions(array(
-            'id' => '\d+'
-        ))->name('simple_get_link');
+$app->registerCallable('simple_get_link', function ($id) use ($app) {
+    echo $id;
+});
 
-        // edit a link
-        $app->post('/:id', function ($id) use ($app) {
-            echo 'edit ' . $id;
-        })->conditions(array(
-            'id' => '\d+'
-        ))->name('simple_edit_link');
+$app->registerCallable('simple_edit_link', function ($id) use ($app) {
+    echo $id;
+});
 
-        // create a link
-        $app->post('/', function () use ($app) {
-            echo 'create link';
-        })->name('simple_create_link');
+$app->registerCallable('simple_create_link', function () use ($app) {
+    echo 'create link';
+});
 
-        // get all links
-        $app->get('/', function () use ($app) {
-            echo 'get all links';
-        })->name('simple_get_links');
-    });
+$app->registerCallable('simple_get_links', function () use ($app) {
+    echo 'get all links';
+});
 
-    $app->group('/category', function () use ($app) {
-        // get a category
-        $app->get('/:id', function ($id) use ($app) {
-            echo $id;
-        })->conditions(array(
-            'id' => '\d+'
-        ))->name('simple_get_category');
-    });
+$app->registerCallable('simple_get_category', function ($id) use ($app) {
+    echo $id;
+});
 
-    $app->group('/user', function () use ($app) {
-        // get a user
-        $app->get('/:id', function ($id) use ($app) {
-            echo $id;
-        })->conditions(array(
-            'id' => '\d+'
-        ))->name('simple_get_user');
+$app->registerCallable('simple_user_login', function () use ($app) {
+    echo 'user login';
+});
 
-        // TODO user auth helper & middleware
-        // user login
-        $app->get('/login', function () use ($app) {
-            echo 'user login';
-        })->name('simple_show_user_login');
+$app->registerCallable('simple_user_login_handle', function () use ($app) {
+    echo 'handle user login';
+});
 
-        // handle user login
-        $app->post('/login', function () use ($app) {
-            echo 'handle user login';
-        })->name('simple_login_user');
+$app->registerCallable('simple_user_logout', function () use ($app) {
+    echo 'user logout';
+});
 
-        $app->get('/logout', function () use ($app) {
-            echo 'user logout';
-        })->name('simple_user_logout');
-    });
+$app->registerCallable('simple_get_user', function ($id) use ($app) {
+    echo $id;
 });

@@ -21,12 +21,14 @@ class Slim_Framework_TestCase extends PHPUnit_Framework_TestCase
     // Initialize our own copy of the slim application
     public function setup()
     {
-        $app = new \Slim\Slim(array(
+        $app = new Slim(array(
             'version' => '0.0.0',
             'debug'   => false,
             'mode'    => 'testing'
         ));
 
+        require __DIR__ . '/../views/simple.php';
+        require __DIR__ . '/../views/api.php';
         require __DIR__ . '/../routes.php';
 
         // Establish a local reference to the Slim app object
