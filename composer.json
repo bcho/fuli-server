@@ -12,6 +12,6 @@
 
     "autoload": {
         "files": ["app/libs/CRUD.php", "app/libs/Slim.php"],
-        "classmap": ["app/models/"]
+        "classmap": ["app/models/", "app/forms/"]
     }
 }

@@ -10,8 +10,10 @@ $app->group('', function () use ($app) {
     $app->group('/link', function () use ($app) {
         $app->mapCallable('simple_get_link', '/int:id', 'GET');
         $app->mapCallable('simple_edit_link', '/int:id', 'POST');
-        $app->mapCallable('simple_create_link', '/int', 'POST');
+        $app->mapCallable('simple_create_link', '/create', 'GET');
+        $app->mapCallable('simple_create_link_handle', '/create', 'POST');
         $app->mapCallable('simple_get_links', '/', 'GET');
+        $app->mapCallable('simple_add_link_comment_handle', '/int:id/comment', 'POST');
     });
 
     $app->group('/category', function () use ($app) {
@@ -45,5 +47,5 @@ $app->group('/api', function () use ($app) {
 });
 
 $app->get('/', function () use ($app) {
-    $app->render('index.html');
+    $app->redirect($app->urlFor('simple_get_links'));
 });
