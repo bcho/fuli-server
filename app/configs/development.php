@@ -28,6 +28,9 @@ $view->parseOptions = array(
     'debug' => true,
     'cache' =>  ROOT_PATH . '/cache'
 );
+$view->parserExtensions = array(
+    new \Slim\Views\TwigExtension()
+);
 
 // prepare database connection
 CRUD\CRUD::configure(array(
