@@ -149,11 +149,15 @@ abstract class CRUDModel
      */
     protected static function buildWhereClause($conditionNames)
     {
+        if (empty($conditionNames)) {
+            return '';
+        }
+
         $clause = array();
         foreach ($conditionNames as $name) {
             $clause[] = "$name = :$name";
         }
-        return "WHERE " . join(' AND ', $clause);
+        return 'WHERE ' . join(' AND ', $clause);
     }
 
     /**
@@ -170,7 +174,7 @@ abstract class CRUDModel
             unset($data[static::$pk]);
         }
         foreach ($data as $k => $v) {
-            $keys[] = "'$k'";
+            $keys[] = "`$k`";
             $values[] = ":$k";
         }
 
@@ -210,7 +214,7 @@ abstract class CRUDModel
      * @param array conditions
      * @return array
      */
-    public static function readMany($conditions)
+    public static function readMany($conditions = array())
     {
         $table = static::$table;
         $whereClause = static::buildWhereClause(array_keys($conditions));
