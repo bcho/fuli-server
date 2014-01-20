@@ -1,0 +1,1 @@
+ALTER TABLE `comments` ADD COLUMN `content` VARCHAR(5000) NOT NULL;
