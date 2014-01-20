@@ -1,0 +1,40 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}福利{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/static/css/vendor.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <script src="/static/js/vendor/modernizr.js"></script>
+        {% block afterhead %}{% endblock %}
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="page">
+            {% block page %}
+            {% block head_nav %}
+            {% include 'simple/parts/head-nav.no-items.html' %}
+            {% endblock %}
+            <section class="links">
+            {% block links %}
+            {% endblock %}
+            </section>
+            {% endblock %}
+            <footer class="copyleft">
+                Created by VTMER with <span class="copyleft__state__highlight">♥</span>
+            </footer>
+        </div>
+
+        <script src="/static/js/vendor/jquery.js"></script>
+        {% block scripts %}{% endblock %}
+</body>
+</html>

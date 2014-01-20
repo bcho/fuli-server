@@ -1,0 +1,33 @@
+{% extends 'simple/page.html' %}
+
+{% block title %}
+{% if current_category %}
+{{ current_category.name }}福利
+{% else %}
+所有福利
+{% endif %}
+{% endblock %}
+
+{% block head_nav %}
+{% include 'simple/parts/head-nav.html' %}
+{% endblock %}
+
+{% block links %}
+{% for link in links %}
+                <div class="links__item">
+                    <a href="{{ link.url }}" target="_blank" class="links__item__title">{{ link.title }}</a>
+                    <div class="links__item__meta clearfix">
+                        <p class="links__item__meta__date">{{ link.created_at }}</p>
+                        <a href="{{ urlFor('simple_get_link', {'id': link.id})}}" class="links__item__meta__comments-count">{{ link.comments_count }} 条评论</a>
+                    </div>
+                </div>
+{% endfor %}
+{% if not links %}
+<div class="links__item">
+    <a href="{{ urlFor('simple_create_link') }}" class="links__item__title">添加一个福利</a>
+    <div class="links__item__meta clearfix">
+        <a href="{{ urlFor('simple_create_link') }}" class="links__item__meta__comments-count">Be informative.</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

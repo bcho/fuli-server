@@ -1,0 +1,36 @@
+{% extends 'simple/page.html' %}
+
+{% block links %}
+                <article class="links__link">
+                    <div class="links__link__wrapper">
+                        <a href="#" class="links__link__title">{{ link.title }}</a>
+                        <section class="links__link__content">
+                            <p>{{ link.description }}</p>
+                        </section>
+                        <div class="links__link__meta clearfix">
+                            <p class="links__link__date">{{ link.created_at }}</p>
+                            <a class="links__link__author" href="#">hbc</a>
+                        </div>
+                    </div>
+                    <section class="links__link__comments">
+                        {% for comment in comments %}
+                        <div class="links__link__comments__item">
+                            <p>{{ comment.content }}</p>
+                            <div class="links__link__comments__item__meta clearfix">
+                                <p class="links__link__comments__item__date">{{ comment.created_at }}</p>
+                                <a class="links__link__comments__item__author" href="#">hbc</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <form class="links__link__comments__add-form pure-form pure-form-stacked" action="{{ urlFor('simple_add_link_comment_handle', {'id': link.id}) }}" method="POST">
+                            <div class="links__link__comments__add-form__textarea pure-control-group">
+                                <textarea name="content" class="pure-input-1-2" rows="5"></textarea>
+                            </div>
+                            <div class="links__link__comments__add-form__submit pure-controls">
+                                <button type="submit" class="pure-button pure-button-small pure-button-primary">添加</button>
+                            </div>
+                        </form>
+                    </section>
+                </article>
+
+{% endblock %}

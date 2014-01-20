@@ -1,0 +1,11 @@
+{% extends 'simple/parts/head-nav.no-items.html' %}
+
+{% block nav %}
+                <nav class="head-nav__nav">
+                    <a href="{{ urlFor('simple_get_links') }}" class="head-nav__nav__item">全部</a>
+                    {% for category in categories %}
+                    <a href="{{ urlFor('simple_get_category', {'id': category.id}) }}" class="head-nav__nav__item {% if current_category.id == category.id %}head-nav__nav__item__state_current{% endif %}">{{ category.name }}</a>
+                    {% endfor %}
+                    <a href="{{ urlFor('simple_create_link') }}" class="head-nav__nav__item head-nav__nav__item__state_prompt">添加</a>
+                </nav>
+{% endblock %}
