@@ -62,7 +62,7 @@ abstract class BaseForm
 
     /**
      * Validate data.
-     * If all fields pass validation it will return TRUE, or it will return
+     * If all fields pass validation it will return NULL, or it will return
      * errors fields.
      *
      * @return mixed
@@ -90,6 +90,6 @@ abstract class BaseForm
             }
         }
 
-        return ($passed) ? ($passed) : ($this->validateErrors);
+        return ($passed) ? (null) : ($this->validateErrors);
     }
 }

@@ -14,9 +14,9 @@ class CreateLinkFormTest extends PHPUnit_Framework_TestCase
         $form->populate($data);
 
         if ($isPassed) {
-            $this->assertTrue($form->validate());
+            $this->assertNull($form->validate());
         } else {
-            $this->assertTrue($form->validate() !== true);
+            $this->assertTrue(is_array($form->validate()));
         }
     }
 
