@@ -18,6 +18,16 @@ abstract class BaseForm
     protected $data = array();
 
     /**
+     * Call when the object is being constructed.
+     */
+    abstract public function initialize();
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
      * Set rule
      *
      * @param string rule's name

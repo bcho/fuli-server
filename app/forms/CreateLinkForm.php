@@ -5,7 +5,7 @@ require_once 'BaseForm.php';
 
 class CreateLinkForm extends BaseForm
 {
-    public function __construct()
+    public function initialize()
     {
         $this->setRule('url', new RequiredValidator());
         $this->setRule('title', new RequiredValidator());
