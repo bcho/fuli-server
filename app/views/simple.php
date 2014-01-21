@@ -8,7 +8,7 @@ $app->registerCallable('simple_get_link', function ($id) use ($app) {
 });
 
 $app->registerCallable('simple_edit_link', function ($id) use ($app) {
-    echo $id;
+    $app->halt(403);
 });
 
 $app->registerCallable('simple_create_link', function () use ($app) {
@@ -24,8 +24,7 @@ $app->registerCallable('simple_create_link_handle', function () use ($app) {
     $errors = $form
         ->populate($data)
         ->validate();
-    // FIXME better representation
-    if (is_array($errors)) {
+    if ($errors) {
         return $app->redirect($app->urlFor('simple_create_link'));
     }
 
@@ -54,8 +53,7 @@ function ($id) use ($app) {
     $errors = $form
         ->populate($data)
         ->validate();
-    // FIXME better representation
-    if (is_array($errors)) {
+    if ($errors) {
         return $app->redirect($app->urlFor('simple_get_link', array(
             'id' => $id
         )));
