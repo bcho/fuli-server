@@ -22,6 +22,15 @@ $configs = array(
 
 $app->config($configs);
 
+// session setup
+$app->add(new \Slim\Middleware\SessionCookie(array(
+    'expires' => '48 hours',
+    'path' => '/',
+    'httponly' => true,
+    'name' => 'fuli',
+    'secret' => $secret_key
+)));
+
 // prepare `twig` templating
 $view = $app->view();
 $view->parseOptions = array(

@@ -1,0 +1,18 @@
+{% extends 'simple/page.html' %}
+
+{% block page %}
+            <form class="login-form pure-form pure-form-aligned" action="{{ urlFor('simple_user_login_handle') }}" method="POST">
+                <h1 class="login-form__header">欢迎回来</h1>
+                <div class="login-form__input pure-control-group">
+                    <label for="stuid">学生卡卡号:</label>
+                    <input type="text" name="stuid" />
+                </div>
+                <div class="login-form__input pure-control-group">
+                    <label for="stuid">密码:</label>
+                    <input type="password" name="password" />
+                </div>
+                <div class="login-form__submit pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">登录</button>
+                </div>
+            </form>
+{% endblock %}
