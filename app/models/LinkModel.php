@@ -27,8 +27,9 @@ class LinkModel extends BaseModel
         return $comments;
     }
 
-    public function readCommentsCount($id)
+    public function readCommentsCount($link)
     {
+        $id = $link['id'];
         $cur = \CRUD\CRUD::getCursor();
         $rv = $cur->query("SELECT COUNT(*)
             FROM `comments`

@@ -1,0 +1,36 @@
+{% extends 'simple/page.html' %}
+
+{# TODO fix include block #}
+{% block logo %}
+{{ user.name }} 添加的福利
+{% endblock %}
+
+{% block title %}
+{{ user.name }} 添加的福利
+{% endblock %}
+
+{% block page %}
+{% include 'simple/parts/head-nav.no-items.html' %}
+            <section class="links pure-g">
+                <div class="links__wrapper pure-u-4-5">
+                    {% for link in user.links %}
+                    <div class="links__item">
+                        <a href="{{ link.url }}" class="links__item__title">{{ link.title }}</a>
+                        <div class="links__item__meta clearfix">
+                            <p class="links__item__meta__date">{{ link.created_at }}</p>
+                            <a href="{{ urlFor('simple_get_link', {'id': link.id}) }}" class="links__item__meta__comments-count">{{ link.comments_count }} 条评论</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="links__wrapper pure-u-1-5">
+                    <div class="links__user-infos">
+                        <h1 class="links__user-infos__nickname">{{ user.name }}</h1>
+                        <div class="links__user-infos__meta">
+                            <p class="links__user-infos__meta__links-count">添加福利： {{ user.links | length }} 条</p>
+                            <p class="links__user-infos__meta__comments-count">评论： {{ user.comments_count }} 条</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+{% endblock %}

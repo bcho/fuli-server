@@ -100,7 +100,7 @@ function ($id) use ($app) {
         'category_id' => $id
     ));
     foreach ($links as &$link) {
-        $link['comments_count'] = LinkModel::readCommentsCount($link['id']);
+        $link['comments_count'] = LinkModel::readCommentsCount($link);
     }
 
     return $app->render('simple/index.html', array(
@@ -147,5 +147,15 @@ $app->registerCallable('simple_user_logout', function () use ($app) {
 
 $app->registerCallable('simple_get_user', 'userView',
 function ($id) use ($app) {
-    echo $id;
+    $user = UserModel::readOneOr404($id);
+    $user['links'] = UserModel::readLinks($user);
+    foreach ($user['links'] as &$link) {
+        $link['comments_count'] = LinkModel::readCommentsCount($link);
+    }
+
+    $user['comments_count'] = UserModel::readCommentsCount($user);
+
+    return $app->render('simple/user.html', array(
+        'user' => $user
+    ));
 });
