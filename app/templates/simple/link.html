@@ -9,7 +9,7 @@
                         </section>
                         <div class="links__link__meta clearfix">
                             <p class="links__link__date">{{ link.created_at }}</p>
-                            <a class="links__link__author" href="#">hbc</a>
+                            <a class="links__link__author" href="{{ urlFor('simple_get_user', {'id': author.id}) }}">{{ author.name }}</a>
                         </div>
                     </div>
                     <section class="links__link__comments">
@@ -18,7 +18,7 @@
                             <p>{{ comment.content }}</p>
                             <div class="links__link__comments__item__meta clearfix">
                                 <p class="links__link__comments__item__date">{{ comment.created_at }}</p>
-                                <a class="links__link__comments__item__author" href="#">hbc</a>
+                                <a class="links__link__comments__item__author" href="{{ urlFor('simple_get_user', {'id': comment.author.id}) }}">{{ comment.author.name }}</a>
                             </div>
                         </div>
                         {% endfor %}

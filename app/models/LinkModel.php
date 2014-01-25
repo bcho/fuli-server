@@ -16,9 +16,15 @@ class LinkModel extends BaseModel
      */
     public function readComments($id)
     {
-        return CommentModel::readMany(array(
+        $comments = CommentModel::readMany(array(
             'link_id' => $id
         ));
+
+        foreach ($comments as &$comment) {
+            $comment['author'] = CommentModel::readAuthor($comment);
+        }
+
+        return $comments;
     }
 
     public function readCommentsCount($id)
@@ -28,5 +34,12 @@ class LinkModel extends BaseModel
             FROM `comments`
             WHERE `link_id` = $id")->fetch();
         return $rv[0];
+    }
+
+    public function readAuthor($link)
+    {
+        return UserModel::readOne(array(
+            'id' => $link['user_id']
+        ));
     }
 }

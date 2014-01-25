@@ -75,9 +75,9 @@ class Auth
             return;
         }
 
-        return array(
-            'username' => $_SESSION['username'],
-            'stuid' => $_SESSION['stuid']
-        );
+        return UserModel::readOne(array(
+            'name' => $_SESSION['username'],
+            'student_id' => $_SESSION['stuid']
+        ));
     }
 }

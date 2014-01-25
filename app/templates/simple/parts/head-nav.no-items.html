@@ -4,7 +4,7 @@
                 {% endblock %}
                 <div class="head-nav__user-infos">
                     {% if current_user %}
-                    <a class="head-nav__user-infos__item head-nav__user-infos__item__state_highlight" href="#">{{ current_user.username }}</a>
+                    <a class="head-nav__user-infos__item head-nav__user-infos__item__state_highlight" href="{{ urlFor('simple_get_user', {'id': current_user.id}) }}">{{ current_user.name }}</a>
                     <a class="head-nav__user-infos__item head-nav__user-infos__item__state_op" href="{{ urlFor('simple_user_logout') }}">登出</a>
                     {% else %}
                     <a class="head-nav__user-infos__item head-nav__user-infos__item__state_op" href="{{ urlFor('simple_user_login') }}">登入</a>
