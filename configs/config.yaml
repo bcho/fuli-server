@@ -3,5 +3,5 @@ name: vtmfuli
 version: 1
 ...
 handle:
-    - rewrite: if (path ~ "/$") goto "/public_html/index.php?%{QUERY_STRING}"
-    - rewrite: if (!is_dir() && !is_file()) goto "/public_html/index.php?%{QUERY_STRING}"
+    - rewrite: if (path ~ "^/static/(.*)") goto "/public_html/static/$1"
+    - rewrite: if (!is_dir() && !is_file()) goto "/index.php?%{QUERY_STRING}"
