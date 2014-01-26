@@ -123,11 +123,7 @@ $app->registerCallable('simple_user_login_handle', function () use ($app) {
     $password = $app->request->post('password');
 
     if (Auth::login($stuid, $password)) {
-        $user = Auth::getUser();
-        $infos = array(
-            'name' => $user['username'],
-            'student_id' => $user['stuid']
-        );
+        $infos = Auth::getUserInfos();
         $rv = UserModel::readOne($infos);
         if (!$rv) {
             UserModel::create($infos);
