@@ -23,7 +23,7 @@ $configs = array(
 $app->config($configs);
 
 // session setup
-$app->add(new \Slim\Middleware\SessionCookie(array(
+$app->add(new SessionCookie(array(
     'expires' => '48 hours',
     'path' => '/',
     'httponly' => true,

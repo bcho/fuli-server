@@ -11,7 +11,8 @@
     },
 
     "autoload": {
-        "files": ["app/libs/CRUD.php", "app/libs/Slim.php", "app/libs/Auth.php"],
+        "files": ["app/libs/CRUD.php", "app/libs/Slim.php", "app/libs/Auth.php",
+                  "app/libs/SessionCookie.php"],
         "classmap": ["app/models/", "app/forms/"]
     }
 }
