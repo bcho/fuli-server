@@ -2,6 +2,7 @@
     "require": {
         "slim/slim": "2.*",
         "slim/views": "0.1.*",
+        "slim/light": "0.1.*",
         "twig/twig": "1.15.*",
         "vtmer/gdut-login-helper": "dev-master"
     },

@@ -16,7 +16,7 @@ function needLogin() {
 }
 
 
-$app->registerCallable('simple_get_link', 'userView',
+$app->set('simple_get_link', 'userView',
 function ($id) use ($app) {
     $link = LinkModel::readOneOr404($id);
     $author = LinkModel::readAuthor($link);
@@ -28,18 +28,18 @@ function ($id) use ($app) {
     ));
 });
 
-$app->registerCallable('simple_edit_link', function ($id) use ($app) {
+$app->set('simple_edit_link', 'userView', function ($id) use ($app) {
     $app->halt(403);
 });
 
-$app->registerCallable('simple_create_link', 'needLogin', 'userView',
+$app->set('simple_create_link', 'needLogin', 'userView',
 function () use ($app) {
     return $app->render('simple/link.add.html', array(
         'categories' => CategoryModel::readMany()
     ));
 });
 
-$app->registerCallable('simple_create_link_handle', 'needLogin',
+$app->set('simple_create_link_handle', 'needLogin',
 function () use ($app) {
     $data = $app->request->post();
 
@@ -58,7 +58,7 @@ function () use ($app) {
     return $app->redirect($app->urlFor('simple_get_links'));
 });
 
-$app->registerCallable('simple_get_links', 'userView',
+$app->set('simple_get_links', 'userView',
 function () use ($app) {
     $links = LinkModel::readMany();
     foreach ($links as &$link) {
@@ -71,7 +71,7 @@ function () use ($app) {
     ));
 });
 
-$app->registerCallable('simple_add_link_comment_handle', 'needLogin',
+$app->set('simple_add_link_comment_handle', 'needLogin',
 function ($id) use ($app) {
     $data = $app->request->post();
 
@@ -93,7 +93,7 @@ function ($id) use ($app) {
     return $app->redirect($app->urlFor('simple_get_link', array('id' => $id)));
 });
 
-$app->registerCallable('simple_get_category', 'userView',
+$app->set('simple_get_category', 'userView',
 function ($id) use ($app) {
     $category = CategoryModel::readOneOr404($id);
     $links = LinkModel::readMany(array(
@@ -110,7 +110,7 @@ function ($id) use ($app) {
     ));
 });
 
-$app->registerCallable('simple_user_login', function () use ($app) {
+$app->set('simple_user_login', function () use ($app) {
     if (Auth::isLogin()) {
         return $app->redirect($app->urlFor('simple_get_links'));
     }
@@ -118,7 +118,7 @@ $app->registerCallable('simple_user_login', function () use ($app) {
     return $app->render('simple/user.login.html');
 });
 
-$app->registerCallable('simple_user_login_handle', function () use ($app) {
+$app->set('simple_user_login_handle', function () use ($app) {
     $stuid = $app->request->post('stuid');
     $password = $app->request->post('password');
 
@@ -135,13 +135,13 @@ $app->registerCallable('simple_user_login_handle', function () use ($app) {
     return $app->redirect($app->urlFor('simple_user_login'));
 });
 
-$app->registerCallable('simple_user_logout', function () use ($app) {
+$app->set('simple_user_logout', function () use ($app) {
     Auth::logout();
 
     return $app->redirect($app->urlFor('simple_get_links'));
 });
 
-$app->registerCallable('simple_get_user', 'userView',
+$app->set('simple_get_user', 'userView',
 function ($id) use ($app) {
     $user = UserModel::readOneOr404($id);
     $user['links'] = UserModel::readLinks($user);

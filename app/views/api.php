@@ -1,25 +1,28 @@
 <?php
 
-$app->registerCallable('api_get_link', function ($id) use ($app) {
-    echo $id;
-});
+class LinkResource extends \Slim\Light\ResourceController
+{
+    public function get($id) {
+        echo $id;
+    }
 
-$app->registerCallable('api_edit_link', function ($id) use ($app) {
-    echo $id;
-});
+    public function update($id) {
+        echo $id;
+    }
 
-$app->registerCallable('api_create_link', function () use ($app) {
-    echo 'create link';
-});
+    public function edit($id) {
+        echo $id;
+    }
 
-$app->registerCallable('api_get_links', function () use ($app) {
-    echo 'get all links';
-});
+    public function get_all() {
+        echo 'Get all links.';
+    }
 
-$app->registerCallable('api_get_category', function ($id) use ($app) {
-    echo $id;
-});
+    public function create() {
+        echo 'Create a link.';
+    }
+}
 
-$app->registerCallable('api_get_user', function ($id) use ($app) {
-    echo $id;
+$app->group('/api', function () use ($app) {
+    $app->resource('api_link', '/link', new LinkResource());
 });
